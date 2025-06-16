@@ -29,7 +29,7 @@ Planning the logic, database schema, and system intelligence.
 
 ![Backend Planning 1](https://github.com/user-attachments/assets/b09c8999-0dc6-4163-b165-b5cf286189ca)  
 ![Backend Planning 2](https://github.com/user-attachments/assets/cce15e13-4826-46e1-b548-9e7c91b11c70)  
-![Backend Planning 3](https://github.com/user-attachments/assets/38431dbc-2d57-43e0-9994-1ac4dad6b742)
+
 
 ---
 
