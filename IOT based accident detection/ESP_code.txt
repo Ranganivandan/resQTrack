@@ -1,0 +1,109 @@
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL345_U.h>
+#include <WiFi.h>
+#include <WiFiClientSecure.h>
+#include <HTTPClient.h>
+#include <UniversalTelegramBot.h>
+
+// WiFi Credentials
+const char* ssid = "dp";
+const char* password = "88888888";
+
+// Telegram Bot
+#define BOTtoken "7887705601:AAH00Oa8nFLrW5CZNBsz_Z-IEMs_fi6llYI"
+#define CHAT_ID "6317104968"
+
+WiFiClientSecure client;
+UniversalTelegramBot bot(BOTtoken, client);
+
+// ADXL345 Object
+Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
+
+// Thresholds (Adjust as needed)
+#define IMPACT_THRESHOLD 30.0   // ~3G impact
+#define FREE_FALL_THRESHOLD 0.5 // Near 0G (Free fall)
+
+// POST URL
+const char* postURL = "https://d0cc-150-129-114-219.ngrok-free.app/esp-time/478289";
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  client.setCACert(TELEGRAM_CERTIFICATE_ROOT);  // For Telegram HTTPS
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi!");
+
+  // Initialize ADXL345
+  if (!accel.begin()) {
+    Serial.println("Failed to find ADXL345");
+    while (1);
+  }
+  Serial.println("ADXL345 Found!");
+
+  accel.setRange(ADXL345_RANGE_16_G);
+}
+
+void loop() {
+  sensors_event_t event;
+  accel.getEvent(&event);
+
+  float totalAcceleration = sqrt(
+    event.acceleration.x * event.acceleration.x +
+    event.acceleration.y * event.acceleration.y +
+    event.acceleration.z * event.acceleration.z
+  );
+
+  Serial.print("Total Acceleration: ");
+  Serial.println(totalAcceleration);
+
+  if (totalAcceleration > IMPACT_THRESHOLD) {
+    Serial.println("🚨 Accident Detected!");
+
+    // Send Telegram alert
+    bot.sendMessage(CHAT_ID, "🚨 Accident Detected! Check the vehicle immediately! 🚑", "");
+
+    // Send POST request
+    sendPostRequest();
+
+    delay(5000);
+  }
+
+  if (totalAcceleration < FREE_FALL_THRESHOLD) {
+    Serial.println("🛑 Free Fall Detected!");
+    bot.sendMessage(CHAT_ID, "🛑 Possible Free Fall Detected!", "");
+    delay(5000);
+  }
+
+  delay(500);
+}
+
+void sendPostRequest() {
+  if ((WiFi.status() == WL_CONNECTED)) {
+    HTTPClient http;
+
+    http.begin(postURL);  // Can also use WiFiClientSecure with certificate for HTTPS
+    http.addHeader("Content-Type", "application/json");
+
+    // You can send dummy or real JSON if required by server
+    String payload = "{\"message\":\"Accident Detected by ESP32\"}";
+
+    int httpResponseCode = http.POST(payload);
+
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println("POST Response Code: " + String(httpResponseCode));
+      Serial.println("Response: " + response);
+    } else {
+      Serial.println("Error on POST: " + String(httpResponseCode));
+    }
+
+    http.end();
+  } else {
+    Serial.println("WiFi not connected!");
+  }
+}
