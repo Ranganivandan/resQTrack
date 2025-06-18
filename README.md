@@ -19,16 +19,20 @@ Watch the full platform in action:
 ## 📊 Business Overview – Research & Planning  
 A deep dive into market analysis, opportunity landscape, and strategic direction.
 
-![Business Plan 1]()  
-![Business Plan 2]()
+![Business Plan 1](![430677840-73d4fa31-8f28-4e63-8406-430475454e38 1](https://github.com/user-attachments/assets/fad3058a-51a9-4b54-a970-c3292a11ecde)
+)  
+![Business Plan 2](![430677844-48672338-769d-4a97-a2b8-02857daf506c 2](https://github.com/user-attachments/assets/8abfcc4e-6406-42e2-a21f-42f6ab0112db)
+)
 
 ---
 
 ## 🧠 Behind the Scenes – Backend Architecture & Flow  
 Planning the logic, database schema, and system intelligence.
 
-![Backend Planning 1]()  
-![Backend Planning 2]()  
+![Backend Planning 1](![430677849-cce15e13-4826-46e1-b548-9e7c91b11c70 1](https://github.com/user-attachments/assets/fef28396-dc5e-475a-b056-1559caad6a6b)
+)  
+![Backend Planning 2](![430677848-b09c8999-0dc6-4163-b165-b5cf286189ca 1](https://github.com/user-attachments/assets/92f33920-c00a-4195-8618-878742d157be)
+)  
 
 
 ---
