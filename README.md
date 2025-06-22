@@ -8,6 +8,29 @@
 
 ### 🛠️ Built by: **HU$TLER5**
 
+## 📦 Tech Stack
+
+- **Frontend:** React.js, Flutter (for cross-platform mobile support)  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
+- **IoT Integration:** Arduino, Sensors (accelerometer, GPS)  
+- **Cloud & Hosting:** Render, Vercel, Firebase  
+- **Communication:** Twilio API, EmailJS  
+- **Other:** Telegram Bot API, QR Code Scanner, AI-based logic modules
+
+---
+
+## 📌 Key Features
+
+- Crash & breakdown detection via IoT sensors  
+- Emergency QR-based ResQTag for instant help  
+- AI-driven mechanic locator & live service provider updates  
+- Automated SMS, email, and app alerts to family/hospitals  
+- Voice-based emergency access  
+- Community-powered support & service network  
+- Admin dashboard for monitoring & control
+
+
 ---
 
 ## 📽️ Demo Video  
@@ -36,29 +59,6 @@ Planning the logic, database schema, and system intelligence.
 
 
 ---
-
-## 📦 Tech Stack
-
-- **Frontend:** React.js, Flutter (for cross-platform mobile support)  
-- **Backend:** Node.js, Express.js  
-- **Database:** MongoDB  
-- **IoT Integration:** Arduino, Sensors (accelerometer, GPS)  
-- **Cloud & Hosting:** Render, Vercel, Firebase  
-- **Communication:** Twilio API, EmailJS  
-- **Other:** Telegram Bot API, QR Code Scanner, AI-based logic modules
-
----
-
-## 📌 Key Features
-
-- Crash & breakdown detection via IoT sensors  
-- Emergency QR-based ResQTag for instant help  
-- AI-driven mechanic locator & live service provider updates  
-- Automated SMS, email, and app alerts to family/hospitals  
-- Voice-based emergency access  
-- Community-powered support & service network  
-- Admin dashboard for monitoring & control
-
 ---
 
 📣 *If you're passionate about saving lives and scaling impactful technology, feel free to connect with us or contribute to ResQTrack!*
